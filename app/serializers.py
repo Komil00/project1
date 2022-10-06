@@ -1,5 +1,3 @@
-from abc import ABC
-
 from rest_framework import serializers
 
 from .models import Client, Device, Loan
@@ -13,7 +11,6 @@ class DeviceSerializers(serializers.ModelSerializer):
 
 
 class ClientSerializers(serializers.ModelSerializer):
-    user = serializers.SlugRelatedField(queryset=CustomUser.objects.all(), slug_field='username')
 
     class Meta:
         model = Client

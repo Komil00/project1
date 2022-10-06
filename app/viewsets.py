@@ -1,6 +1,5 @@
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.decorators import action
-from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, ViewSet
@@ -29,17 +28,17 @@ class ClientViewSet(ViewSet):
 
 class DeviceViewSet(ModelViewSet):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     queryset = Device.objects.all()
     serializer_class = DeviceSerializers
 
     @action(detail=True, methods=['post'], name='create')
-    def createdevice(self, request, pk=True):
+    def createdevice(self, request):
         serializer = DeviceSerializers(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-    #
+
     # @action(detail=True, methods=['post'], name='create')
     # def createmodel(self, request, pk=True):
     #

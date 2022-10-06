@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'core',
 
     'rest_framework',
+    'rest_framework_swagger',
     'rest_framework.authtoken',
     'djoser',
 
@@ -60,6 +61,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {
+                'staticfiles': 'django.templatetags.static',
+            }
         },
     },
 ]
